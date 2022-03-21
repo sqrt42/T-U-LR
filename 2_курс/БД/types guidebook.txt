@@ -1,0 +1,6 @@
+1	massager
+2	kettle
+3	deep fryer
+4	toster
+5	juicer
+6	meat grinder

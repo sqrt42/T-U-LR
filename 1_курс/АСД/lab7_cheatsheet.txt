@@ -1,0 +1,161 @@
+using System;
+using System.Collections.Generic;
+
+namespace Laba7 {
+    class Program {
+
+        class Node<T> where T : IComparable {
+            public Node<T> Left { get; set; }
+            public Node<T> Right { get; set; }
+            public T Element { get; set; }
+
+            public Node(T element) {
+                Element = element;
+            }
+        }
+
+        /// <summary>
+        /// Общее дерево для сортировки элементов
+        /// </summary>
+        /// <typeparam name="T">Элемент дерева. Сюда можно вставить всё, что можно сравнить =)</typeparam>
+        class Tree<T> where T : IComparable {
+            /// <summary>
+            /// Постоянная ссылка на корень. Нужна, чтобы не "потярть" дерево и служит точкой отсчет при рекурсивных обходах
+            /// </summary>
+            protected Node<T> _root;
+
+            /// <summary>
+            /// Метод служит для добавления нового элемента в дерево
+            /// </summary>
+            /// <param name="newElement">Новый элемент</param>
+            public void AddElement(T newElement)
+            {
+                if (_root == null) //Добавление первого элемента, своего рода инициализация дерева
+                {
+                    //Так как дерево пустое, то просто инициализируем корень, без всяких проверок и вычислений
+                    _root = new Node<T>(newElement);
+                    return;
+                }
+                //Если корень уже есть, то заходим в него и начинаем вычислять, куда добавить текущий элемент
+                AddElementRecursion(_root, newElement);
+            }
+            /// <summary>
+            /// Рекурсивный метод для добавления элемента в дерево
+            /// Рассматривается текущая вершина currentNode и анализируется, куда надо добавлять новый элемент, в левое или правое поддерево
+            /// </summary>
+            /// <param name="currentNode">Текущая вершина</param>
+            /// <param name="newElement">Добавляемый элемент</param>
+            private static void AddElementRecursion(Node<T> currentNode, T newElement)
+            {
+                if (currentNode.Element.CompareTo(newElement) < 0) //Если новый элемент меньше текущего
+                {
+                    // То заходим в его правую ветку
+                    if (currentNode.Right == null) // Если правой ветки не было, то создаем правого детёныша, и, соответственно, заканчивается добавление
+                        currentNode.Right = new Node<T>(newElement);
+                    else //Если же правая ветка есть, то входим в нее, и повторяем такую же процедуру
+                        AddElementRecursion(currentNode.Right, newElement);
+                }
+                else //Иначе, если новый элемент больше или равен текущему
+                {
+                    // То заходим в его левую ветку
+                    if (currentNode.Left == null) // Если левой ветки не было, то создаем левого детёныша, и, соответственно, заканчивается добавление
+                        currentNode.Left = new Node<T>(newElement);
+                    else //Если же левая ветка есть, то входим в нее, и повторяем такую же процедуру
+                        AddElementRecursion(currentNode.Left, newElement);
+                }
+
+            }
+
+            /// <summary>
+            /// Пример использования дерева. Поиск минимального элемента
+            /// </summary>
+            /// <returns>Найденный минимальный элемент</returns>
+            public T GetMinElement()
+            {
+                //указываем, что надо начинать искать с корня, и уходим в рекурсию
+                return GetMinElementRecursion(_root);
+            }
+            /// <summary>
+            /// Рекурсивный метод для поиска минимального элемента в дереве
+            /// Рассматривается текущая вершина currentNode и анализируется, где дальше надо искать минимальный элемента, в левом или правом поддереве
+            /// </summary>
+            /// <param name="currentNode">Текущая вершина</param>
+            /// <returns>Найденный минимальный элемент</returns>
+            private static T GetMinElementRecursion(Node<T> currentNode)
+            {
+                if (currentNode.Left == null)
+                    return currentNode.Element;
+                else
+                    return GetMinElementRecursion(currentNode.Left);
+            }
+
+            public T GetMaxElement()
+            {
+                return GetMaxElementRecursion(_root);
+            }
+
+            private static T GetMaxElementRecursion(Node<T> currentNode)
+            {
+                if (currentNode.Right == null)
+                    return currentNode.Element;
+                else
+                    return GetMaxElementRecursion(currentNode.Right);
+            }
+        }
+
+        /// <summary>
+        /// Конкретизированное дерево на тип double, расширяем предыдущее дерево
+        /// </summary>
+        class TreeDoubleType : Tree<double>
+        {
+            /// <summary>
+            /// Пример рекурсивного обхода дерева. Поиск суммы всех элементив
+            /// </summary>
+            /// <returns>Найденная сумма всех элементов</returns>
+            public void Print()
+            {
+                //Инициализация суммы
+                double sum = 0;
+                //Уход в рекурсию для поиска суммы
+                PrintRecursion(_root, ref sum);
+                Console.WriteLine(_root);
+                
+            }
+            /// <summary>
+            /// Рекурсивный метод для поиска минимального элемента в дереве
+            /// Рассматривается текущая вершина currentNode и анализируется, где дальше надо искать минимальный элемента, в левом или правом поддереве
+            /// <param name="currentNode">Текущая вершина</param>
+            /// <param name="sum">Текущая сумма</param>
+            /// </summary>
+            private static void PrintRecursion(Node<double> currentNode, ref double sum)
+            {
+                //Прибавляем элемент из текущей вершины
+                
+                Console.WriteLine(currentNode.Element);
+                //Считаем сумму для левого поддерева
+                if (currentNode.Left != null)
+                    PrintRecursion(currentNode.Left, ref sum);
+                //Считаем сумму для левого поддерева
+                if (currentNode.Right != null)
+                    PrintRecursion(currentNode.Right, ref sum);
+            }
+        }
+
+
+        static void Main(string[] args) {
+            double[] doubleArray = new[] { 1, 5, -1.4, 7, 3, 0, 4, -1, 6, -10, 8.4, 5, -7, -6, 5, 3, 7, -2 };
+            
+            TreeDoubleType tree = new TreeDoubleType();
+
+            foreach (double d in doubleArray)
+                tree.AddElement(d);
+
+            double min = tree.GetMinElement();
+            tree.Print();
+            double max = tree.GetMaxElement();
+
+            Console.WriteLine("The smallest element is " + min);
+            Console.WriteLine("The biggest element is " + max);
+        }
+    }
+}

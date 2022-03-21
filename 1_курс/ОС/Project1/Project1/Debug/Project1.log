@@ -1,0 +1,10 @@
+﻿  Source.c
+c:\users\acer\desktop\osv_\os\project1\project1\source.c(16): warning C4013: _tcslen: нет определения; предполагается "extern" с возвратом типа "int"
+c:\users\acer\desktop\osv_\os\project1\project1\source.c(35): warning C4013: _T: нет определения; предполагается "extern" с возвратом типа "int"
+c:\users\acer\desktop\osv_\os\project1\project1\source.c(35): warning C4047: функция: "LPCSTR" отличается по уровням косвенного обращения от "int"
+c:\users\acer\desktop\osv_\os\project1\project1\source.c(35): warning C4024: CreateFileA: различные типы для формального и фактического параметров 1
+c:\users\acer\desktop\osv_\os\project1\project1\source.c(38): warning C4047: функция: "LPCSTR" отличается по уровням косвенного обращения от "int"
+c:\users\acer\desktop\osv_\os\project1\project1\source.c(38): warning C4024: CreateFileA: различные типы для формального и фактического параметров 1
+Source.obj : error LNK2019: ссылка на неразрешенный внешний символ __T в функции _ConsolePrompt
+MSVCRTD.lib(exe_main.obj) : error LNK2019: ссылка на неразрешенный внешний символ _main в функции "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\Acer\Desktop\osv_\OS\Project1\Debug\Project1.exe : fatal error LNK1120: неразрешенных внешних элементов: 2

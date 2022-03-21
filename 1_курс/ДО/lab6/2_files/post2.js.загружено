@@ -1,0 +1,99 @@
+function MathQuillFormul()
+{
+var sq=addscript("https://math.semestr.ru/skin/mathquill/mathquill.js",0);
+sq.onload=function()
+  {
+  var MQ = MathQuill.getInterface(2);
+  var sel=document.getElementsByClassName('mathquill'),kol=sel.length;
+  for (var i=0; i<kol; i++)
+    {
+    var problemSpan=sel[i];
+    MQ.StaticMath(problemSpan);
+    }
+  }
+}
+function LoadWord(event)
+{
+process.innerHTML='Загрузка файла ...';
+processtime.innerHTML='';
+if(process.innerHTML!='')
+  {
+  var prctimerId=setInterval(function(){processtime.innerHTML+='|&#9632;|';var m=processtime.innerHTML.split('||');if(m.length>=15){var prctimerId=Number(processtime.getAttribute('data-tid'));processtime.innerHTML='';process.innerHTML='';clearInterval(prctimerId);CloseModal('myProcess');}},200);
+  processtime.setAttribute('data-tid',prctimerId);
+  }
+ShowModal('myProcess');
+return 1;
+}
+function CtreateBtn()
+{
+if(sf && document.getElementById('savebtn')==null){var btn=document.createElement('input');btn.type='submit';btn.id='savebtn';btn.name='crc';btn.className='btn btn-lg btn-success';btn.value='Скачать в Word';sf.action='/fileload.php';sf.appendChild(btn);if(document.getElementById('savebtn1')){var card=document.getElementById('savebtn1');card.parentNode.removeNode(card);}}
+var savebtn=document.getElementById('savebtn');
+if(sfdoc && document.getElementById('savebtndoc')==null){var btn=document.createElement('input');btn.type='submit';btn.id='savebtndoc';btn.name='crc';btn.className='btn btn-lg btn-success';btn.value='Формат docx';sfdoc.action='/fileload.php';sfdoc.appendChild(btn);if(document.getElementById('savebtn1')){var card=document.getElementById('savebtn1');card.parentNode.removeNode(card);}}
+var sbdoc=document.getElementById('savebtndoc');
+if(sfe && document.getElementById('savexcel')==null){var btn=document.createElement('input');btn.type='submit';btn.id='savexcel';btn.name='excel';btn.className='btn btn-lg btn-success';btn.value='Скачать Excel';sfe.action='/fileload.php';sfe.appendChild(btn);}
+var sbe=document.getElementById('savexcel');
+if(sf && savebtn){sf.action='/fileload.php';savebtn.disabled=false;}
+if(sfdoc && sbdoc){sfdoc.action='/fileload.php';sbdoc.disabled=false;}
+if(sfe && sbe){sfe.action='/fileload.php';sbe.disabled=false;}
+}
+function LoadBtn()
+{
+if(sf)sf.addEventListener("submit",LoadWord,false);
+if(sfdoc)sfdoc.addEventListener("submit",LoadWord,false);
+}
+$(document).on( "click", "#saveAll", function(event)
+    {
+    document.getElementById('saveAll').disabled=true;
+    var fd=new FormData();
+    $('svg').each(function(index,val){image=svgToPng('svg:eq('+index+')');fd.append('image_'+index, image);});
+    var btn=document.createElement('div');btn.id='waitsave';document.getElementById('loadpic').appendChild(btn);
+    document.getElementById('waitsave').innerHTML='<div id="ballsWaveG"><div id="ballsWaveG_1" class="ballsWaveG"></div><div id="ballsWaveG_2" class="ballsWaveG"></div><div id="ballsWaveG_3" class="ballsWaveG"></div><div id="ballsWaveG_4" class="ballsWaveG"></div><div id="ballsWaveG_5" class="ballsWaveG"></div><div id="ballsWaveG_6" class="ballsWaveG"></div><div id="ballsWaveG_7" class="ballsWaveG"></div><div id="ballsWaveG_8" class="ballsWaveG"></div></div>';
+    $.ajax({type: 'POST',url: '/fileload.php',data: fd, processData: false, contentType: false}).done(function(data) {frmsaveAll.click();destroyParent(document.getElementById('waitsave'));document.getElementById('saveAll').disabled=false;});
+    });
+if(document.getElementById("messageblock2")){var outer=document.getElementById('messageblock2').parentNode;outer.removeChild(document.getElementById('messageblock2'));}
+if(document.getElementById('premain')==null){document.getElementById('mymessage').innerHTML='<span style="color:red">Не верно введены исходные данные. Задать вопрос по вводу данных можно внизу этой страницы.</span>';ShowModal('myMessage');}
+LoadBtn();
+var adm1=document.getElementById('admain1'),das=idsemestr.getAttribute('data-ads');
+if(adm1)
+  {
+  var pm=document.getElementById('premain'),btnWord=document.getElementById('balance1');
+  if(btnWord){btnWord.innerHTML="Word: Подробности";btnWord.className='btn btn-lg btn-primary flex1';}
+  var fmay=(IsAdBlock()==1 || (IsAdBlock()==0 && das!='2') );
+  if(pm && pm.innerHTML=='' && fmay)
+    {
+    process.innerHTML='Обработка формул ...';
+    ShowModal('myProcess');
+    var label=pm.getAttribute('data-label');
+    $.ajax({type:"POST",url:"/action.php",cache:false,data:"action=preview&&label="+label,success: function(html)
+	{
+	adm1.innerHTML='';adm1.className='';
+	var date=new Date();var m=date.getMonth()+1;
+	pm.innerHTML='<div id="menuresult" class="btn-group" role="group"></div>'+html;
+	var memur=document.getElementById('menuresult');
+	if((m>=8)&&(m<=9))memur.innerHTML='<button class="btn btn-lg btn-info" id="copy-button" data-clipboard-target="#premain">Копировать в буфер обмена</button>';
+	$.ajax({type: "POST",url: "/action.php",cache: false,data: "action=menuresult",success: function(html){memur.insertAdjacentHTML('beforeend',html);onMenuDrop();}});
+	if((m>=8)&&(m<=9)){var cb=addscript("//www.semestr.ru/skin/clipboard/dist/clipboard.min.js",0);cb.onload=function(){new Clipboard('#copy-button');}}
+//	MathQuillFormul();
+	if(IsAdBlock()==1){CtreateBtn();LoadBtn();}
+	else
+	  {
+	  var btnForm=document.getElementById('saveform');
+	  if(btnForm){btnForm.insertAdjacentHTML('afterend','<button rel="popover" type="button" class="btn btn-lg btn-danger margin10" data-container="body" data-toggle="popover" data-placement="top" data-content="Чтобы скачать решение в Word, отключите, пожалуйста, блокираторы типа AdBlock и перезагрузите страницу" onclick="clkPopover(this);">Скачать Word</button>');destroyParent(btnForm);}
+	  if(sfe && document.getElementById('savexcel')==null){var btn=document.createElement('code');btn.innerHTML='Чтобы скачать решение, отключите, пожалуйста, блокираторы скриптов (AdBlock и т.п.)';sfe.appendChild(btn);}
+	  }
+	}
+	});
+    }
+  if(IsAdBlock()==0)
+    {
+    if(das=='0'){adm1.innerHTML='';adm1.className='';if(btnWord){btnWord.insertAdjacentHTML('afterend','<button rel="popover" type="button" class="btn btn-lg btn-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="Чтобы скачать решение в Word, отключите, пожалуйста, блокираторы типа AdBlock и перезагрузите страницу" onclick="clkPopover(this);">Скачать Word</button>');destroyParent(btnWord);}}
+    if(das=='1'){adm1.innerHTML=mdsa2;adm1.className='well-color';}
+    if(das=='2'){pm.innerHTML='';adm1.innerHTML=mdisad;adm1.className='well-color';}
+    }
+  var rowbtn=document.getElementById('rowbtn');
+  if(IsAdBlock()==1 && document.getElementById('MathLeftBlock') && rowbtn)
+    {
+    var btn=document.createElement('a');btn.href='https://www.semestr.ru/page11';btn.role='button';btn.className='btn btn-lg btn-info flex1';btn.target='_blank';btn.innerHTML='Решение без рекламы';rowbtn.appendChild(btn);
+    }
+  }
+var sf=document.getElementById('saveform'),sfdoc=document.getElementById('saveformdoc'),sfe=document.getElementById('frmExcel');

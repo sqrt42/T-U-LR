@@ -1,0 +1,6 @@
+1	222	Scaner HP Scanjet 2200c	50
+2	333	Scaner EPSON Perfection 1250U Pfoto	80
+3	444	Printer EPSON Stylus C40SX	40
+4	555	Printer HP LaserJet 1220	150
+5	666	Monitor 17" Samsung SyncMaster 757NF	180
+6	777	Monitor 19" Samsung SyncMaster 957DFX	250

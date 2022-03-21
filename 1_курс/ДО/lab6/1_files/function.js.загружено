@@ -1,0 +1,482 @@
+function crExcel(r,c,t,v){if(document.getElementById('dfeinp')==null){var btn=document.createElement('div');btn.id='dfeinp';document.getElementById('frmCorel').appendChild(btn);var s='';if(v) s='<span class="input-mobil"><input value="1" name="f1" id="f1" type="checkbox"></span>Имеется только один столбец с данными';if(t=='')t='Вставьте данные из Excel или Word, нажмите <Далее>';s=s+'<textarea rows="5" class="form-control" name="TEXTEXCEL" id="txtExcel" placeholder="'+t+'"></textarea>';document.getElementById('dfeinp').innerHTML=s;}else destroyParent(document.getElementById('dfeinp'));return false;}
+function del_spaces(s){s=s.replace(/\s/g, '');s=s.replace(',', '.');s=parseFloat(s);return s;}
+function SetRowBlock(id,place)
+{
+if(id!='' && place!='')
+{
+let node=document.getElementById(id),row=document.getElementById(place);
+if(row && node && row.hasChildNodes)
+{
+let els=document.getElementsByClassName('col-sm-6')[0],uls=els.getElementsByTagName('ul'),wells=row.childNodes;
+for (let j=0; j<uls.length; j++)
+  {
+  if(uls[j].className.indexOf("nav-tabs") > -1)
+    {
+    let top=uls[j].getBoundingClientRect().top+window.pageYOffset;
+    for (let i=0; i<wells.length; i++)
+      {
+      let topw=0;topw=wells[i].getBoundingClientRect().top+window.pageYOffset;if(topw>=top){let outer=node.parentNode;outer.removeChild(node);let div=document.createElement('div');div.id=id;row.insertBefore(div,wells[i]);i=wells.length;}
+      }
+    }  
+  }
+}
+}
+}
+function SetMasBanner()
+{
+var h=document.getElementsByClassName('col-sm-6')[0].getBoundingClientRect().height,t=0;
+h=h+';'+idsemestr.getAttribute('data-vid')+';'+t+';'+screen.width;
+var xhr=new XMLHttpRequest();
+xhr.open('POST','/action.php');
+var formData = new FormData();
+formData.append('action','infoblock');formData.append('h',h);
+xhr.send(formData);
+xhr.onload=function(){
+if(xhr.status != 200){alert('Ошибка: ' + xhr.status);return;}
+var html=xhr.response,bm=html.split('@@');
+var rleft=document.getElementById('MathLeftBlock'),rRight=document.getElementById('MathRightBlock');
+if(rleft && bm[0])rleft.innerHTML=bm[0];
+if(rRight && bm[1])rRight.innerHTML=bm[1];
+if((document.getElementById("bn_banner")==null)&&(idbanner)&& bm[3]){var btn=document.createElement('div');btn.id='bn_banner';idbanner.appendChild(btn);var b=document.getElementById("bn_banner");b.classList.add('div-center');b.innerHTML=bm[3];}
+idsemestr.setAttribute('data-lang','l'+bm[4]);
+if(bm[5])idsemestr.setAttribute('data-namelang',bm[5]);
+var lang='l'+bm[4];if((lang=='l1' || lang=='l3')&& document.getElementById("selang"))destroyParent(document.getElementById("selang"));
+if(window.topyandexads){if(screen.width>=768){SetRowBlock(idsemestr.getAttribute('data-leftid'),'MathLeftBlock');SetRowBlock(idsemestr.getAttribute('data-rightid'),'MathRightBlock');}topyandexads();}
+}
+xhr.onerror=function(){alert('Ошибка сервера');}
+}
+function destroyChildren(node){while (node.firstChild) node.removeChild(node.firstChild);}
+function destroyParent(node){var outer=node.parentNode;outer.removeChild(node);}
+function filter(a){a=a||window.event;var b=document.all;if("INPUT"!=(a.target||a.srcElement).tagName.toUpperCase())return!0;b=b?a.keyCode:a.which;if(32>b||a.ctrlKey||a.altKey)return!0;a=String.fromCharCode(b);for(var c in mas_filter)if(mas_filter[c]==a)return!0;if(!is_valid.test(a))return!1};
+function fX(f,e,g){for(var a="",d=1;d<=e;d++){stepen=e-d+1;var b=document.getElementById(f+d).value;if("0"!=b){var c=b;"1"==b&&(c="");"-1"==b&&(c="-");1==d?a=1<stepen?c+"x<sup>"+stepen+"</sup>":c+"x":"-"==b[0]?(1<stepen&&(a=a+c+"x<sup>"+stepen+"</sup>"),1==stepen&&(a=a+c+"x")):(1<stepen&&(a=a+"+"+c+"x<sup>"+stepen+"</sup>"),1==stepen&&(a=a+"+"+c+"x"))}}b=document.getElementById(f+(e+1)).value;0!=b&&(a="-"==b[0]?a+b:a+"+"+b);document.getElementById(g).innerHTML=a};
+function buildHelpInputs()
+{
+var inputElems=document.getElementsByTagName('input'),kol=inputElems.length,w=screen.width;
+for (var i=0;i<kol;i++)
+  {
+  if(inputElems[i].type=="text")
+    {
+    if(inputElems[i].className.indexOf("helpInput")>=0){var keyid=inputElems[i].id;var spbut=document.createElement('span');spbut.className="input-group-addon";spbut.id=keyid+'-spanh';inputElems[i].parentNode.insertBefore(spbut,inputElems[i].nextSibling);var keybut=document.createElement('a');keybut.role="button";keybut.href="#";keybut.className="btn-lg btn-warning helpmath";keybut.id=keyid+'h';document.getElementById(keyid+'-spanh').appendChild(keybut);document.getElementById(keyid+'h').innerHTML="?";keybut.addEventListener("click",function(e){e.preventDefault();var keyid=e.target.id;keyid=keyid.substring(0,keyid.length-1);document.getElementById('hmodal').innerHTML=document.getElementById(keyid+'hm').innerHTML;ShowModal('myHelp');return 0;},false);}
+    if(inputElems[i].className.indexOf("keyboardInput")>=0 && w<540){var keyid=inputElems[i].id;var spbut=document.createElement('span');spbut.className="input-group-addon";inputElems[i].parentNode.insertBefore(spbut,inputElems[i].nextSibling);var keybut=document.createElement('a');keybut.setAttribute('data-fx',keyid);keybut.href="#";spbut.appendChild(keybut);var s="x<sup>2</sup>";if(inputElems[i].getAttribute('data-var')=='t')s="t<sup>2</sup>";if(inputElems[i].getAttribute('data-var')=='A')s="A<sup>-1</sup>";keybut.innerHTML=s;keybut.addEventListener("click",function(e){e.preventDefault();var id=e.target;var fid=id.getAttribute('data-fx');var s="x^2";if(document.getElementById(fid).getAttribute('data-var')=='t')s="t^2";if(document.getElementById(fid).getAttribute('data-var')=='A')s="A^(-1)";document.getElementById(fid).value+=s;return 0;},false);}
+    }
+  }
+}
+function MessageError(d,html){d.attr('class','well');var m=document.getElementById('message');m.innerHTML=html;m.style.display='block';setTimeout("document.getElementById('message').style.display='none'",10000);}
+function MesErr(d,html){d.setAttribute('class','well');d.innerHTML=html;d.style.display='block';setTimeout("document.getElementById('message').style.display='none'",10000);}
+function IsAdBlock()
+{
+var fmay=1;
+if(document.getElementById('MathRightBlock') || document.getElementById('MathLeftBlock'))
+{
+for (var i=0; i<ads.length; i++)
+  {
+  if(window.getComputedStyle(ads[i],null).opacity=='0')fmay=0;
+  var ins=ads[i].getElementsByTagName('ins');
+  for (var j=0; j<ins.length; j++)
+    {
+    if(window.getComputedStyle(ins[j],null).display==='none')fmay=0;
+    }
+  }
+if(fmay && idbanner)
+  {
+  if(window.getComputedStyle(idbanner,null).visibility==='hidden')fmay=0;
+  if(window.getComputedStyle(idbanner,null).opacity=='0')fmay=0;
+  var img=idbanner.getElementsByTagName('img')[0];
+  var s=window.getComputedStyle(idbanner,null).transform;
+  if(s!==undefined && s.indexOf("matrix")>=0)fmay=0;
+  }
+if(fmay && bnmath)
+  {
+  if(window.getComputedStyle(bnmath,null).visibility==='hidden')fmay=0;
+  if(window.getComputedStyle(bnmath,null).opacity=='0')fmay=0;
+  if(window.getComputedStyle(bnmath,null).display==='none')fmay=0;
+  }
+if(fmay && adsimg)
+  {
+  if(window.getComputedStyle(adsimg,null).visibility==='hidden')fmay=0;
+  if(window.getComputedStyle(adsimg,null).opacity=='0')fmay=0;
+  if(window.getComputedStyle(adsimg,null).display==='none')fmay=0;
+  }
+}
+//fmay=1;
+return fmay;
+}
+function Discus(e){var disqus_shortname='semestr';(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();destroyParent(document.getElementById('disqus_btn'));if(e)e.preventDefault();return 0;}
+function InputForms()
+{
+var s=document.getElementById('isemestrf').getAttribute('data-input');
+if (s)
+  {
+  var m=s.split(';');
+  for (var i=0; i<m.length; i++)
+    {
+    var mi=m[i].split(':');
+    document.getElementById(mi[0]).value=mi[1];
+    }
+  }
+var s=document.getElementById('isemestrf').getAttribute('data-select');
+if (s)
+  {
+  var m=s.split(';');
+  for (var i=0; i<m.length; i++)
+    {
+    var mi=m[i].split(':');
+    document.getElementById(mi[0]).options[mi[1]].selected=true;
+    }
+  }
+}
+function newsrc(s)
+{
+var f=0;var i=s.indexOf("chl=");
+if(i>0 && f==1)s='https://latex.codecogs.com/gif.latex?'+s.substr(i+4);
+return s;
+}
+function buildLoadImg()
+{
+var inputElems=document.getElementsByTagName('img'),kol=inputElems.length;
+for (var i=0;i<kol;i++)
+  {
+  if(inputElems[i].className.indexOf("loadimg") > -1 && inputElems[i].hasAttribute('data-src'))
+    {
+    inputElems[i].setAttribute('src',newsrc(inputElems[i].getAttribute('data-src')));
+    inputElems[i].classList.remove('loadimg');
+    inputElems[i].classList.add('img-online');
+    }
+  }
+idsemestr.setAttribute('data-img','1');
+}
+function Share()
+{
+var el=document.getElementsByClassName('share');
+for (var i=0; i<el.length; i++)
+  {
+  var title=document.getElementsByTagName('title')[0].innerHTML,h=el[i].getAttribute('href'),h=h.replace('pagetitle',title),h=h.replace('pageurl',location.href);
+  el[i].setAttribute('href',encodeURI(h));
+  }
+}
+function ys(){(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');}
+function YandexSearch(){return {'action':'https://www.semestr.ru/search','arrow':true,'bg':'#ffcc00','fontsize':18,'fg':'#000000','language':'ru','logo':'rb','publicname':'Yandex Site Search #146763','suggest':true,'target':'_blank','tld':'ru','type':2,'usebigdictionary':false,'searchid':146763,'input_fg':'#000000','input_bg':'#ffffff','input_fontStyle':'normal','input_fontWeight':'normal','input_placeholder':null,'input_placeholderColor':'#000000','input_borderColor':'#7f9db9'};}
+function addscript(src,v){var s=document.createElement('script');s.src=src;if(v<2){if(v==0)s.defer="true";else s.async="true";}if(v==2)s.crossorigin="anonymous";document.body.appendChild(s);return s;}
+function loadCSS(hf){var ms=document.createElement("link");ms.rel="stylesheet";ms.href=hf;document.getElementsByTagName("head")[0].appendChild(ms);}
+function clkSearch(e){e.preventDefault();ys();ShowModal('mySearch');return 0;}
+function SelectID(s)
+{
+var id=s,i=s.indexOf("#");
+if(i>=0)id=s.substr(i+1);
+return id;
+}
+function ActivTab(e)
+{
+e.preventDefault();
+var lia=this.parentElement;
+var ul=lia.parentElement;
+var li=ul.getElementsByTagName("li");
+for (var i=0; i<li.length; i++)
+  {
+  if(li[i].classList.contains('active'))li[i].classList.remove('active');
+  var a=li[i].getElementsByTagName("a");
+  if(a.length==1)
+    {
+    var s=a[0].href,id=SelectID(s),div=document.getElementById(id);
+    if(div.classList.contains('active'))div.classList.remove('active');
+    }
+  }
+lia.classList.add('active');
+var s=this.href,id=SelectID(s),div=document.getElementById(id);
+if(div)
+  {
+  div.classList.add('active');
+  if(s.indexOf("#video")>=0||s.indexOf("#example")>=0)
+    {
+    var el=div.getElementsByClassName('youtube');
+    for (var i=0; i<el.length; i++)
+      {
+      if(el[i].innerHTML=='')el[i].innerHTML='<div id="loadtube">...load...</div><iframe width="420" height="315" src="//www.youtube.com/embed/'+el[i].getAttribute("name")+'" frameborder="0" allowfullscreen></iframe>';
+      }
+    }
+  if(s.indexOf("#word")>=0||s.indexOf("#example")>=0)
+    {
+    var el=div.getElementsByClassName('docs');
+    for (var i=0; i<el.length; i++)
+      {
+      if(el[i].innerHTML=='')el[i].innerHTML='<iframe src="https://docs.google.com/gview?url=https%3A%2F%2Fmath.semestr.ru%2F'+el[i].getAttribute("name")+'&amp;embedded=true" style="width:100%;" frameborder="0"></iframe>';
+      }
+    }
+  }
+return 0;
+}
+function onTab()
+{
+var el=document.getElementsByClassName('nav-tabs');
+for (var i=0; i<el.length; i++)
+  {
+  if(el[i].getAttribute('role')=='tablist')
+    {
+    var li=el[i].getElementsByTagName("li");
+    for (var j=0; j<li.length; j++)
+      {
+      var a=li[j].getElementsByTagName("a");
+      if(a.length==1)a[0].addEventListener("click",ActivTab,false);
+      }
+    }
+  }
+}
+function clkMenu()
+{
+var div=this.parentElement;
+if(div.classList.contains('btn-group') && div.getAttribute('role')=='group')
+  {
+  var ul=div.getElementsByTagName("ul")[0];
+  if(ul.classList.contains('dropdown-menu') && ul.getAttribute('aria-labelledby')==this.id)
+    {
+    var b=document.getElementsByTagName('body')[0];
+    if(div.classList.contains('open')){div.classList.remove('open');ul.style.display="none";b.classList.remove('modal-open');}
+    else {div.classList.add('open');ul.style.display="block";b.classList.add('modal-open');}
+    }
+  }
+}
+function onMenuDrop()
+{
+var btn=document.getElementsByTagName("button");
+for (var i=0; i<btn.length; i++)
+  {
+  if(btn[i].classList.contains('dropdown-toggle'))btn[i].addEventListener("click",clkMenu,false);
+  }
+}
+function ShowModal(id)
+{
+if(id=='myProcess')
+  {
+  processtime.innerHTML='';
+  if(process.innerHTML!='')
+    {
+    var prctimerId=setInterval(function(){processtime.innerHTML+='|&#9632;|';var m=processtime.innerHTML.split('||');if(m.length>=15)CloseModal('myProcess');},200);
+    processtime.setAttribute('data-tid',prctimerId);
+    }
+  }
+var info=document.getElementById(id);
+info.style.display="block";
+info.setAttribute('aria-hidden','true');
+info.classList.add('in');
+var b=document.getElementsByTagName('body')[0];
+b.classList.add('modal-open');
+}
+function CloseModal(id)
+{
+if(id=='myProcess')
+  {
+  var prctimerId=Number(processtime.getAttribute('data-tid'));
+  processtime.innerHTML='';process.innerHTML='';
+  clearInterval(prctimerId);
+  }
+var info=document.getElementById(id);
+info.style.display="none";
+info.setAttribute('aria-hidden','false');
+info.classList.remove('in');
+var b=document.getElementsByTagName('body')[0];
+b.classList.remove('modal-open');
+}
+function clkPopover(el)
+{
+hmodal.innerHTML='<div class="well">'+el.getAttribute("data-content")+'</div>';ShowModal('myHelp');
+}
+function Popover()
+{
+var btn=document.getElementsByTagName('button');
+for(var i=0;i<btn.length;i++)
+  {
+  if(btn[i].getAttribute("rel")=='popover')btn[i].addEventListener("click",function(e){hmodal.innerHTML=this.getAttribute("data-content");ShowModal('myHelp');},false);
+  }
+}
+function usermobil(event)
+{
+event.preventDefault();
+event.stopPropagation();
+mcol3r[0].removeEventListener("touchstart",usermobil,false);
+}
+function loadmodul()
+{
+if(idsemestr.getAttribute('data-vid')=='2' || window.AfterjQuery)
+{
+var js=addscript('/skin/jquery.min.js',0);
+js.onload=function(){if(window.AfterjQuery)AfterjQuery();if(idsemestr.getAttribute('data-vid')=='2')addscript("/skin/post2.js",0);}
+}
+onTab();
+if(idsemestr.getAttribute('data-img')=="0")buildLoadImg();
+if(idsemestr.getAttribute('data-vid')!='1')Share();
+Popover();
+var w=document.getElementsByClassName('hyoutube');
+for(var i=0;i<w.length;i++)
+  {
+  w[i].addEventListener("click",function(e){el=e.target;var v=el.getAttribute("data-v");if(v){if(document.getElementById(v))destroyParent(document.getElementById(v));else {var div=document.createElement("div");div.id=v;div.innerHTML='<div id="loadtube">...load...</div><iframe width="420" height="315" src="//www.youtube.com/embed/'+v+'" frameborder="0" allowfullscreen></iframe>';el.after(div);}}},false);
+  }
+var timerId=setInterval(function(){if(document.getElementById('loadtube')){destroyParent(document.getElementById('loadtube'));clearInterval(timerId);}},2000);
+}
+function usermove(event)
+{
+event.preventDefault();
+event.stopPropagation();
+loadmodul();
+document.removeEventListener("touchstart",usermove,false);
+document.removeEventListener("touchmove",usermove,false);
+document.removeEventListener("mouseover",usermove,false);
+}
+function SelLang()
+{
+document.getElementById("selang").innerHTML='<div id="google_translate_element" class="language"></div>';
+var scriptEl=document.createElement('script');
+scriptEl.innerHTML="function googleTranslateElementInit(){new google.translate.TranslateElement({layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-12816821'}, 'google_translate_element');}";
+document.body.appendChild(scriptEl);
+addscript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",1);
+}
+function ForSmartfon()
+{
+document.getElementById('mymessage').innerHTML='В некоторых мобильных браузерах (например, Opera mini, Bravo, Chrome for Android) по умолчанию включена блокировка скриптов. В этом случае, необходимо ее отключить и перезагрузить страницу. Если это не помогло, то решение можно получить, после <a role="button" href="https://www.semestr.ru/page11" class="btn btn-lg btn-success" target="_blank">регистрации</a> и оплаты на портале.';
+ShowModal('myMessage');
+}
+function HrefUrl()
+{
+var menu=document.getElementsByClassName('dropdown-menu')[0],ali=menu.getElementsByTagName('a')[0];
+var html=ali.innerHTML,href=ali.getAttribute('href');
+var url=location.href;
+var div=document.getElementsByClassName('btn-group-flex'),kol=div.length;
+for (var i=0; i<kol; i++)
+  {
+  if(div[i].getAttribute('itemtype'))
+    {
+    var a=div[i].getElementsByTagName('a'),num=a.length;
+    for (var j=0;j<num;j++)
+      {
+      var ahref=a[j].getAttribute('href');
+      if (url.indexOf(ahref)>=0)
+	{
+//	if(a[j].childNodes)a[j].childNodes[0].innerHTML=html;
+	a[j].innerHTML=html;
+	a[j].setAttribute('href',href);
+	i=kol;j=num;
+	}
+      }
+    }
+  }
+}
+function clkNext(event,vid,el)
+{
+event.preventDefault();
+document.getElementById('process').innerHTML='Загрузка файла ...';
+ShowModal('myProcess');
+var formData = new FormData();
+formData.append('action','loadhtml');formData.append('v',vid);formData.append('f',location.href);
+var xhrn=new XMLHttpRequest();xhrn.open('POST','/action.php',false);
+xhrn.send(formData);
+if(xhrn.status != 200){alert('Ошибка сервера: '+xhrn.status+': '+xhrn.statusText,xhrn.readyState);return false;}
+else
+  {
+  var a=document.createElement('article');a.innerHTML=xhrn.response;
+  el.parentNode.insertBefore(a,el);
+  destroyParent(el);
+  buildLoadImg();
+  CloseModal('myProcess');
+  }
+return 0;
+}
+function clkHelp(event,el)
+{
+event.preventDefault();
+document.getElementById('hmodal').innerHTML=document.getElementById(el.id+'hm').innerHTML;ShowModal('myHelp');
+return 0;
+}
+function CheckErr(d,formData)
+{
+d.innerHTML='';d.setAttribute('class','fx');
+var xhrf=new XMLHttpRequest();xhrf.open('POST','/action.php',false);
+xhrf.send(formData);
+if(xhrf.status != 200){alert('Ошибка сервера: '+xhrf.status+': '+xhrf.statusText);return false;}
+else
+  {
+  if(xhrf.response!='true'){MesErr(d,xhrf.response);return false;}
+  }
+if(d.innerHTML!='') return false;
+return true;
+}
+function CheckAdblock()
+{
+if(slv2 && pomesb)
+  {
+  if(IsAdBlock()==0)
+    {
+    if(idsemestr.getAttribute('data-ads')=='2'){pomesb.innerHTML=mdisad;slv2.disabled=true;return 0;}
+    }
+  }
+return 1;
+}
+function GotoPage(vid)
+{
+process.innerHTML='Идет проверка введеных данных и подготовка к перезагрузке страницы<div id="ballsWaveG"><div id="ballsWaveG_1" class="ballsWaveG"></div><div id="ballsWaveG_2" class="ballsWaveG"></div><div id="ballsWaveG_3" class="ballsWaveG"></div><div id="ballsWaveG_4" class="ballsWaveG"></div><div id="ballsWaveG_5" class="ballsWaveG"></div><div id="ballsWaveG_6" class="ballsWaveG"></div><div id="ballsWaveG_7" class="ballsWaveG"></div><div id="ballsWaveG_8" class="ballsWaveG"></div></div></div>';
+var info=document.getElementById('myProcess');
+info.style.display="block";
+info.setAttribute('aria-hidden','true');
+info.classList.add('in');
+var b=document.getElementsByTagName('body')[0];
+b.classList.add('modal-open');
+if(vid==1)solve1.click();
+if(vid==2)solve2.click();
+setTimeout(function(){processtime.innerHTML='Осталось менее 30 секунд...';},3000);
+setTimeout(function(){processtime.innerHTML='Осталось менее 20 секунд...<br>Обратите внимание, что когда будет получено решение, после него, как правило, располагаются дополнительные функции и сервисы';},15000);
+setTimeout(function(){processtime.innerHTML='Осталось менее 10 секунд...<br>';},30000);
+}
+function CheckGoto(el)
+{
+var f=1;
+if(idsemestr.getAttribute('data-ads')=='2' && IsAdBlock()==0)
+  {
+  if(document.getElementById('messageblock1')=='undefined' || document.getElementById('messageblock1')==null)
+    {
+    var btn=document.createElement('div'),parent=el.parentElement;btn.id='messageblock1';
+    parent.insertBefore(btn,el);
+    }
+  document.getElementById('messageblock1').innerHTML=mdisad;
+  f=0;
+  }
+if(f && typeof BtnSubmitForm =='function')f=BtnSubmitForm();
+return f;
+}
+onMenuDrop();
+var is_valid=/\d/;var idsemestr=document.getElementById('paramsemestr');var mas_filter=['.',',','-','/'];
+var mdisad='<code>Для получения решения необходимо отключить блокираторы типа AdBlock (Adguard, uBlock) и перезагрузить страницу. Для DrWeb, Kaspersky, Avast возможно понадобится включение сайта в список исключений.</code><br><button type="button" class="btn btn-lg btn-default" onclick="ForSmartfon();">Для смартфонов</button>',mdsa1='<code>Блокираты скриптов AdBlock (Adguard, uBlock) могут помешать корректной работе сервиса. Оформление в Word может быть недоступно</code>',mdsa2='<code>Для получения полного решения необходимо отключить блокираторы типа AdBlock (Adguard, uBlock) и перезагрузить страницу. Для DrWeb, Kaspersky, Avast возможно понадобится включение сайта в список исключений.</code><br><button type="button" class="btn btn-lg btn-default" onclick="ForSmartfon();">Для смартфонов</button>';
+var idbanner=document.getElementById('idbanner'),ads=document.getElementsByClassName('adsbygoogle'),slv2=document.getElementById('solve2'),pomesb=document.getElementById("messageblock1"),bnmath=document.getElementById("bn_math"),adsimg=document.getElementById("adsimg"),topads=document.getElementById("topads");
+
+if(idsemestr.getAttribute('data-vid')=='2')loadmodul();
+else
+{
+document.addEventListener("touchstart",usermove,false);
+document.addEventListener("touchmove",usermove,false);
+document.addEventListener("mouseover",usermove,false);
+}
+var mcol3l=document.getElementsByClassName('col-sm-3'),mcol6=document.getElementsByClassName('col-sm-6'),mcol3r=document.getElementsByClassName('col-sm-3r');
+if(idsemestr.getAttribute('data-vid')=='0')
+  {
+  SetMasBanner();
+  if(screen.width<540)
+    {
+    if(idbanner)idbanner.innerHTML='<div id="bn_banner" class="div-center"><a rel="nofollow" href="https://www.semestr.ru/2gnJbB6" target="_blank"><img class="imgmobil" src="https://www.semestr.ru/images/foxford/min.png"></a></div>';
+    mcol3r[0].addEventListener("touchstart",usermobil,false);
+    }
+  }
+
+if(document.getElementById('brws'))document.getElementById('brws').value=screen.width+';'+screen.height;
+if(document.getElementById('isemestrf'))InputForms();
+var s=location.href;if(s.indexOf("#comment-")>0 && document.getElementById('disqus_btn'))Discus();
+
+window.onload = function()
+  {
+  if(window.viewsetm)viewsetm();
+  if(slv2 && pomesb)
+    {
+    if(IsAdBlock()==0)
+      {
+      if(idsemestr.getAttribute('data-ads')=='2'){pomesb.innerHTML=mdisad;slv2.disabled=true;}
+      else pomesb.innerHTML=mdsa1;
+      }
+    }
+  if(idsemestr.getAttribute('data-method')=='m')document.getElementById("licount").innerHTML="<a href='//www.liveinternet.ru/click' target=_blank><img src='//counter.yadro.ru/hit?t44.1;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=31 height=31 alt='semestr' title='LiveInternet'><\/a>";
+  }

@@ -1,0 +1,136 @@
+if (themoneytizer_async != 1) {
+var confiantWrap = function confiantWrap(a,b,c,d,e,f,g){'v2.202005201049';function h(a){for(var b in l)if(b===a&&l[b])return l[b];return null}function i(a){if("string"!=typeof a)return a;var b=a.match(/[^\u0000-\u024F\u1E00-\u1EFF\u2C60-\u2C7F\uA720-\uA7FF]/g);if(!b)return a;for(var c=0;c < b.length;c++)a=a.replace(b[c],encodeURIComponent(b[c]));return a}function j(a){return a=i(a),(s(a)||"")[y]("/","_")[y]("+","-")}function k(b,c,e,g){var h=D+t(b)+"&d="+c,i="err__"+1*new Date;q[i]=g;var j="<"+w+' type="text/java'+w+'">window["'+d+'"]={};'+'window["'+d+'"]["tpid"]="'+b+'";'+'window["'+d+'"]["'+b+'"]='+r.stringify(e)+";"+"</"+w+">",k="<"+w+" on"+z+'="void('+i+'())" '+x+'="'+h+'" type="text/java'+w+'" ></'+w+">";f&&(k="<"+w+" on"+z+'="void('+i+'())" '+'" type="text/java'+w+'" >'+unescape(f)+"</"+w+">"),a[B](j+k)}var l=b.adserverTargeting,m=b.bidder,n=null,o=b.size;g=g||{},f=f||null;var p=g.devMode,q=a.parentWindow||a.defaultView,r=q.JSON,s=q.btoa,t=q.encodeURIComponent;if(!r||!s)return!1;var u="t",v="i",w="script",x="src",y="replace",z="error",A="stringify",B="wr"+v+u+"e";c.indexOf("http")< 0&&(c="https://"+c);var C,D=c+"/?wrapper="+t(d)+"&tpid=";C=h("oz_winner")||"ozone"===m?{k:{hb_bidder:[h("oz_winner")],hb_size:[o]}}:{k:{hb_bidder:[m],hb_size:[o]}};var E=!1,F=!(!window._clrm||!window._clrm.gpt),G=!(!window.confiant||!window.confiant.settings),H=window.confiant||window._clrm||{};return F||G||H.isListener||(H.isListener=!0,function(){function a(a){var b="cb";if("string"==typeof a.data&&a.data.indexOf(b+d)>-1){var c=a.data.substr(b.length+d.length),f=atob(c),g=window.JSON.parse(f);try{e.apply(this,g)}catch(a){console.log("Custom callback failed with an error: "+a)}"undefined"!=typeof confiantAutoRFCb&&confiantAutoRFCb.apply(null,g)}}if(window.addEventListener)try{window.top.addEventListener("message",a,!1)}catch(b){window.addEventListener("message",a,!1)}else window.top.attachEvent("onmessage",a)}()),function(){try{n=j(d+"/"+C.k.hb_bidder[0]+":"+C.k.hb_size[0]);var c={wh:n,wd:r.parse(r[A](C)),wr:0};2===p&&(c.cb=1e3*Math.random());var f={prebid:{adId:b.adId,cpm:b.cpm,s:b.adUnitCode},tp_crid:b.creativeId},h=!1;try{h=!!q.frameElement.getAttribute("data-forced-sandbox")}catch(a){}var i={d:c,t:escape(b.ad),isE:!0,cb:e,id:f,isFSb:h,devMode:p,isPerf:g.isPerf,isLS:g.isLS};k(n,j(r[A](c)),i,function(){a[B](b.ad)})}catch(a){E=!0;var c={property_id:d,uh:n||"wt_not_established",url:window.location.href||window.top.location.href||document.url||"url not found",label:"confiantWrap_initialize",msg:a.message},l=new XMLHttpRequest;l.open("POST","https://protected-by.clarium.io/werror",!0),l.send(s(r.stringify(c)))}}(),a.close(),!E};
+var themoneytizer_async = 1;
+(function(){window.whenFormatFctDefined=function($context,$variable){if($context[$variable]){$context[$variable]()}else{Object.defineProperty($context,$variable,{configurable:!0,enumerable:!0,writeable:!0,get:function(){return this['_'+$variable]},set:function(val){this['_'+$variable]=val;$context[$variable]()}})}}}).call(this);
+(function(){window.whenDefined=function($context,$variable,$callback){if($context[$variable]){$callback()}else{Object.defineProperty($context,$variable,{configurable:!0,enumerable:!0,writeable:!0,get:function(){return this['_'+$variable]},set:function(val){this['_'+$variable]=val;$callback()}})}}}).call(this);
+if (window.jQuery) {
+if (jQuery.ajaxSetup) {
+jQuery.ajaxSetup({cache:true});
+}
+}
+var geo = document.createElement('script');
+geo.type = 'text/javascript';
+geo.async = true;
+geo.src = 'https://g.themoneytizer.net/g/';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.appendChild(geo);
+var eucountries = ["AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE","EU", "ES", "FI", "FR", "GB", "GR", "HR", "HU", "IE", "IT", "LT", "LU", "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK"];
+(function(){var s=document.createElement('script'),
+t=document.getElementsByTagName('script')[0];s.type='text/javascript';
+s.src='https://ads.themoneytizer.com/moneybile.js';t.parentNode.insertBefore(s,t)})();
+
+(function() {
+
+var pulse = document.createElement('script');
+pulse.type = 'text/javascript';
+pulse.async = true;
+pulse.src = 'https://tag.contextweb.com/getjs.static.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.appendChild(pulse);
+})();
+
+var sas = sas || {};
+sas.cmd = sas.cmd || []; 
+
+ sas.cmd.push(function() {
+             sas.setup({networkid: 1097, domain: "https://ww1097.smartadserver.com", async: true, renderMode: sas.renderMode.ON_DEMAND });
+        });
+
+var generic = document.createElement("script");
+generic.setAttribute("type", "text/javascript");
+generic.setAttribute("src", "https://ww1097.smartadserver.com/config.js?nwid=1097");
+document.head.appendChild(generic);
+
+   var criteoCallback = function (data) {
+            if (data && data.status === "OK") {
+                sas.cmd.push(function () { sas.setPartnerId("79", data.userid); });
+            }
+            sas.cmd.push(function(){sas.render();});
+        }
+ 
+        setTimeout(criteoCallback, 200);
+        var criteo_gum = document.createElement("script");
+criteo_gum.setAttribute("type", "text/javascript");
+criteo_gum.setAttribute("src", "https://gum.criteo.com/sync?c=147&r=2&j=criteoCallback");
+criteo_gum.setAttribute("async", "true");
+document.head.appendChild(criteo_gum);
+
+var pwidget_config = {
+     publisherKey:"1sbtjc2sqopftf032cn",
+     shareQuote:false
+};
+function loadScriptTemelio(url, callback) { var script = document.createElement("script");
+    script.type = "text/javascript"; script.async = true;
+    if (script.readyState) { script.onreadystatechange = function () {
+    if (script.readyState == "loaded" || script.readyState == "complete") {
+script.onreadystatechange = null;
+if (callback && typeof callback === "function") { callback(); }
+
+    } }; } else { script.onload = function () { if (callback && typeof callback === "function") { callback(); } }; }
+    script.src = url;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+}
+loadScriptTemelio('https://tag.leadplace.fr/libJsLP.js', function () { libJsLeadPlace.SendtoLPbyIframe("id=MTIZ"); });
+var iframe = document.createElement("iframe");
+iframe.src = "https://onetag-sys.com/usync/?pubId=2a897e3f18e6769&cb=" + new Date().getTime();
+iframe.style.display = "none";
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.appendChild(iframe);
+var iframe = document.createElement("iframe");
+iframe.src = "https://spl.zeotap.com/?env=mWeb&uc=2&zdid=1258&eventType=map";
+iframe.style.display = "none";
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.appendChild(iframe);
+ (function(win, doc) {
+        var id5 = {
+            partnerId : 12,
+            cascades  : 9,
+            hasTcfCmp : true,
+            debug     : true,
+
+            makeUrl: function() {
+                var isSync = (typeof this.callType != 'undefined' && this.callType.toLowerCase() === 'sync' && this.myUid && this.myUid.length > 0);
+                return 'https://id5-sync.com/'+(isSync?'s':'i')+'/'+this.partnerId+'/'+this.cascades+'.gif?'+(isSync?'puid='+encodeURIComponent(this.myUid)+'&':'')+'gdpr='+encodeURIComponent(this.gdprApplies||'')+'&gdpr_consent='+encodeURIComponent(this.consentData||'');
+            },
+            prepareId5Pixel: function() {
+                if(doc.readyState !== 'loading') {
+                    this.fireId5Pixel();
+                } else {
+                    doc.addEventListener('DOMContentLoaded', function () {
+                        id5.fireId5Pixel();
+                    });
+                }
+            },
+            fireId5Pixel: function() {
+                var url = this.makeUrl();
+                this.log('Firing ID5 pixel at url:', url);
+                (new Image()).src = url;
+            },
+            processTcfResults: function(result) {
+                this.log('Received TCF result', result);
+                this.gdprApplies = result.gdprApplies;
+                this.consentData = result.consentData;
+            },
+            init: function() {
+                if(this.hasTcfCmp){
+                    try {
+                        win.__cmp('getConsentData', null, function(result) {
+                            id5.processTcfResults(result);
+                            id5.prepareId5Pixel();
+                        });
+                    } catch (e) {
+                        id5.log('Exception received while calling TCF CMP', e);
+                        id5.prepareId5Pixel();
+                    }
+                } else {
+                    id5.prepareId5Pixel();
+                }
+            },
+            log: function(msg, data) {
+
+  
+            }
+        };
+        id5.init();
+    })(window, document);
+  }

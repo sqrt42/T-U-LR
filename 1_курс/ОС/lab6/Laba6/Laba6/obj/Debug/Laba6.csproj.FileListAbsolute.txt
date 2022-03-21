@@ -1,0 +1,9 @@
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\bin\Debug\Laba6.exe.config
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\bin\Debug\Laba6.exe
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\bin\Debug\Laba6.pdb
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\obj\Debug\Laba6.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\obj\Debug\Laba6.Properties.Resources.resources
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\obj\Debug\Laba6.csproj.GenerateResource.cache
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\obj\Debug\Laba6.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\obj\Debug\Laba6.exe
+C:\Users\Acer\Desktop\osv_\OS\lab6\Laba6\Laba6\obj\Debug\Laba6.pdb
