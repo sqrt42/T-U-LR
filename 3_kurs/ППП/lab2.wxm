@@ -1,0 +1,115 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+f1: (x-3) / (sqrt(x) - sqrt(6-x));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit (f1, x, 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2: ((x - 5) / (x+ 3))^(-3*x+5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(f2, x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f3: (3*x^2 + 19*x + 28) / (4 - 3*x - x^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(f3, x, -4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f4: (1 - cos(3*x)) / (2*x^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit (f4, x, 0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f5: ((x) / (x-3)) ^ (x-5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit (f5, x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f6: ((3*x) / (2+x)^(1/3)) - (6*(2+x)^(1/3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f6,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f7: (sin(5*x))^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f7, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f8: (x)^(e^x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f8, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f9: x*(arcsin(x)) + sqrt(1-x^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f9, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f10: (e^(2*x*y)) - x^2 + y^2 = 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends(y,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+drv: diff(eq, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(drv, 'diff(y,x));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f11: (x + cos(3*x))^(1/3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x0: 0.5;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 5 do (
+g:diff(f11,x,i),
+display(ev(g, numer, x=x0)));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

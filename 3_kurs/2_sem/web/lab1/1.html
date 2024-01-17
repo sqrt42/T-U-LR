@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Lab1-1</title>
+    </head>
+
+    <body>
+        <main>
+            <form id="teacherForm">
+                <label for="fname">Full name:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+
+                <p>Gender:</p>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="phone">Phone number:</label><br>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"><br><br>
+
+                <label for="color">Color:</label><br>
+                <input type="color" id="color" name="color" value="#000000" /><br><br>
+
+                <label for="country">Country:</label><br>
+                <input type="text" id="country" name="country"><br><br>
+
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city"><br><br>
+            </form><br>
+
+            <textarea name="comment" form="teacherForm">Comment</textarea>
+        </main>
+    </body>
+</html>

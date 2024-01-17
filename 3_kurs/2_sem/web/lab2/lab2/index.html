@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Lab2</title>
+    </head>
+
+    <body>
+        <nav>
+            <div class="nav-upper">
+                <a href="#" class="nav-home">Teachinder</a>
+
+                <div class="nav-right-container">
+                    <input type="text" name="nav-search" id="nav-search" placeholder="Name, note or age to search" class="nav-searchbar">
+                    <button type="button" class="nav-find">Search</button>
+                </div>
+            </div>
+
+            <div class="nav-lower">
+                <div class="links">
+                    <a href="#" class="lower-link">Teachers</a>
+                    <a href="#" class="lower-link">Statistics</a>
+                    <a href="#" class="lower-link">Favorites</a>
+                    <a href="#" class="lower-link">About</a>
+                </div>
+
+                <button type="button" class="lower-add modal-toggle" id="myBtn">Add teacher</button>
+            </div>
+        </nav>
+
+        <main>
+            <h1>Top Teachers</h1>
+
+            <div class="filters">
+
+                <div class="filter">
+                    <label for="age">Age</label>
+                    <select id="age" name="age" size="1">
+                        <option value="18-31">18-31</option>
+                        <option value="32-45">32-45</option>
+                        <option value="46-58">46-58</option>
+                        <option value="59-71">59-71</option>
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <label for="region">Region:</label>
+                    <select id="region" name="region" size="1">
+                        <option value="Europe">Europe</option>
+                        <option value="Asia">Asia</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <label for="sex">Sex:</label>
+                    <select name="sex" id="sex" size="1">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="filter">
+                    <input type="checkbox" id="photo" name="photo">
+                    <label for="photo">Only with photo</label>
+                </div>
+
+                <div class="filter">
+                    <input type="checkbox" id="favorites" name="favorites">
+                    <label for="favorites">Only favorites</label>
+                </div>
+            </div>
+
+            <div class="teachers">
+                <div class="compact-teacher modal-teacher-toggle">
+                    <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                    <p class="teacher-name">David<br>Harris</p>
+                    <p class="teacher-specialty">Firearms</p>
+                    <p class="teacher-location">USA</p>
+                </div>
+
+                <div class="compact-teacher modal-teacher-toggle">
+                    <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                    <p class="teacher-name">David<br>Harris</p>
+                    <p class="teacher-specialty">Firearms</p>
+                    <p class="teacher-location">USA</p>
+                </div>
+
+                <div class="compact-teacher modal-teacher-toggle">
+                    <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                    <p class="teacher-name">David<br>Harris</p>
+                    <p class="teacher-specialty">Firearms</p>
+                    <p class="teacher-location">USA</p>
+                </div>
+
+                <div class="compact-teacher modal-teacher-toggle">
+                    <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                    <p class="teacher-name">David<br>Harris</p>
+                    <p class="teacher-specialty">Firearms</p>
+                    <p class="teacher-location">USA</p>
+                </div>
+
+                <div class="compact-teacher modal-teacher-toggle">
+                    <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo favorite-star">
+                    <p class="teacher-name">David<br>Harris</p>
+                    <p class="teacher-specialty">Firearms</p>
+                    <p class="teacher-location">USA</p>
+                </div>
+
+                <div class="compact-teacher modal-teacher-toggle">
+                    <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                    <p class="teacher-name">David<br>Harris</p>
+                    <p class="teacher-specialty">Firearms</p>
+                    <p class="teacher-location">USA</p>
+                </div>
+
+                <div class="compact-teacher modal-teacher-toggle">
+                    <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                    <p class="teacher-name">David<br>Harris</p>
+                    <p class="teacher-specialty">Firearms</p>
+                    <p class="teacher-location">USA</p>
+                </div>
+            </div>
+
+            <h2>Statistics</h2>
+
+            <div class="stats">
+                <table class="table" id="table">
+                    <thead class="table-head">
+                        <tr>
+                            <th>Name</th>
+                            <th>Specialty</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Nationality</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="table-name">Julia Bradley</td>
+                            <td>Math</td>
+                            <td>26</td>
+                            <td>Female</td>
+                            <td>USA</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Rita Hart</td>
+                            <td>Art</td>
+                            <td>41</td>
+                            <td>Female</td>
+                            <td>Ireland</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Jonathan Jacobs</td>
+                            <td>Math</td>
+                            <td>32</td>
+                            <td>Male</td>
+                            <td>England</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Nathaniel White</td>
+                            <td>Computer Science</td>
+                            <td>37</td>
+                            <td>Male</td>
+                            <td>Austria</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Frank Medina</td>
+                            <td>English</td>
+                            <td>43</td>
+                            <td>Male</td>
+                            <td>Italy</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Ella Curtis</td>
+                            <td>Chess</td>
+                            <td>34</td>
+                            <td>Female</td>
+                            <td>USA</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Claire Simmmons</td>
+                            <td>Art</td>
+                            <td>38</td>
+                            <td>Female</td>
+                            <td>Netherlands</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Benjamin Knight</td>
+                            <td>Biology</td>
+                            <td>44</td>
+                            <td>Male</td>
+                            <td>Scotland</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-name">Norma Rose</td>
+                            <td>Statistics</td>
+                            <td>36</td>
+                            <td>Female</td>
+                            <td>France</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <h2>Favorites</h2>
+
+            <div class="favorite-teachers">
+                <div class="teachers">
+                    <div class="compact-teacher modal-teacher-toggle">
+                        <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                        <p class="teacher-name">David<br>Harris</p>
+                        <p class="teacher-specialty">Firearms</p>
+                        <p class="teacher-location">USA</p>
+                    </div>
+
+                    <div class="compact-teacher modal-teacher-toggle">
+                        <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                        <p class="teacher-name">David<br>Harris</p>
+                        <p class="teacher-specialty">Firearms</p>
+                        <p class="teacher-location">USA</p>
+                    </div>
+
+                    <div class="compact-teacher modal-teacher-toggle">
+                        <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                        <p class="teacher-name">David<br>Harris</p>
+                        <p class="teacher-specialty">Firearms</p>
+                        <p class="teacher-location">USA</p>
+                    </div>
+
+                    <div class="compact-teacher modal-teacher-toggle">
+                        <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo">
+                        <p class="teacher-name">David<br>Harris</p>
+                        <p class="teacher-specialty">Firearms</p>
+                        <p class="teacher-location">USA</p>
+                    </div>
+
+                    <div class="compact-teacher modal-teacher-toggle">
+                        <img src="https://placehold.co/144" alt="A 400px by 400px gray circle" title="Placeholder" class="teacher-photo favorite-star">
+                        <p class="teacher-name">David<br>Harris</p>
+                        <p class="teacher-specialty">Firearms</p>
+                        <p class="teacher-location">USA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lorem">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ipsum sit amet ligula hendrerit aliquet. Ut sapien velit, ultricies in velit et, imperdiet vehicula odio. Praesent rhoncus ex quis velit dictum dignissim ac eu purus. Suspendisse id turpis metus. Donec accumsan, metus in finibus tempor, nibh risus semper dui, sit amet tempus nunc leo nec ipsum. Morbi posuere tortor et vulputate ullamcorper. Quisque maximus ex at suscipit pulvinar.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ipsum sit amet ligula hendrerit aliquet.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+
+            <div class="nav-lower">
+                <div class="links">
+                    <a href="#" class="lower-link">Teachers</a>
+                    <a href="#" class="lower-link">Statistics</a>
+                    <a href="#" class="lower-link">Favorites</a>
+                    <a href="#" class="lower-link">About</a>
+                </div>
+
+                <button class="lower-add modal-toggle" id="myBtn">Add teacher</button>
+            </div>
+
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <form id="teacherForm">
+                    <label for="fname">Full name:</label><br>
+                    <input type="text" id="fname" name="fname"><br>
+    
+                    <p>Gender:</p>
+                    <input type="radio" id="male" name="gender" value="Male">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label><br><br>
+    
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br><br>
+    
+                    <label for="phone">Phone number:</label><br>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"><br><br>
+    
+                    <label for="color">Color:</label><br>
+                    <input type="color" id="color" name="color" value="#000000" /><br><br>
+    
+                    <label for="country">Country:</label><br>
+                    <input type="text" id="country" name="country"><br><br>
+    
+                    <label for="city">City:</label><br>
+                    <input type="text" id="city" name="city"><br><br>
+                </form><br>
+    
+                <textarea name="comment" form="teacherForm">Comment</textarea>
+                </div>
+            </div>
+
+            <div class="modalTeacher" id="modalTeacher">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                    <h1>Full version of a teacher's card</h1>
+
+                    <article>
+                        <h2>General information</h2>
+                        <p>Name: Eric David Harris</p>
+                        <p>Gender: male</p>
+                        <p>Age: 28</p>
+                    </article>
+
+                    <article>
+                        <h2>Contact information</h2>
+                        <p>Email: <a href="mailto: ericdavidharris@gmail.com">ericdavidharris@gmail.com</a></p>
+                        <p>Phone number: <a href="tel: (666) 666-6666">(666) 666-6666</a></p>
+                    </article>
+
+                    <article>
+                        <h2>Location</h2>
+                        <p>Country: United States of America</p>
+                        <p>City: Lakewood</p>
+
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98246.3523609182!2d-105.19645979270514!3d39.69024040710132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b816f5cdd72b7%3A0x9e905dfaf1d0ce97!2sLakewood%2C%20CO%2C%20USA!5e0!3m2!1sen!2sua!4v1681068420399!5m2!1sen!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </article>
+
+                    <article>
+                        <h2>Comments</h2>
+                        <p>No comments here.</p>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+
+    <footer>
+        
+    </footer>
+</html>

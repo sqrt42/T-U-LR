@@ -1,0 +1,12 @@
+Matrix = [1,2,3; 4,5,6; 7,8,0];
+Matrix 
+[I,J] = size(Matrix);
+Sum = zeros(I,1);
+for i = 1:I
+	for j = 1:J
+		Sum(i) = Sum(i) + Matrix(i,j);
+	end
+end
+Sum
+Matrix = [Matrix(:,1:J-1), Sum];
+Matrix
