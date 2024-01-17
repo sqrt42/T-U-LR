@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<LinearLayout
+    xmlns:android= "http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height= "fill_parent"
+    android:orientation="vertical" >
+
+    <CheckBox
+        android:id= "@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick= "onCheckboxClicked"
+        android:text= "Вибери мене "/>
+
+    <ToggleButton
+        android:id="@+id/toggle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:clickable="true"
+        android:onClick="onToggleClicked"
+        android:textOff="Дзвінок вимкнено"
+        android:textOn="Дзвінок увімкнено" />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id= "@+id/radio_group">
+        <RadioButton
+            android:id= "@+id/radio_dog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick= "onRadioButtonClicked"
+            android:text= "Собачка" />
+        <RadioButton
+            android:id= "@+id/radio_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick= "onRadioButtonClicked"
+            android:text= "Котик " />
+        <RadioButton
+            android:id= "@+id/radio_rabbit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick= "onRadioButtonClicked"
+            android:text= "Кролик" />
+    </RadioGroup>
+
+    <EditText
+        android:id= "@+id/user_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint= "Введіть ім’я"/>
+
+    <Button
+        android:id= "@+id/clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick= "onClearButtonClicked"
+        android:text="Очистити"
+        android:padding= "10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id= "@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background= "@drawable/smile_button"
+        android:onClick= "onButtonClicked"
+        android:padding= "10dp" />
+
+</LinearLayout>

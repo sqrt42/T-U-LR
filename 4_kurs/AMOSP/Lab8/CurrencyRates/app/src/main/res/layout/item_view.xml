@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<LinearLayout
+    xmlns:android= "http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height= "fill_parent"
+    android:orientation="horizontal" >
+    <TextView
+        android:id= "@+id/charCodeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background= "#FF8"
+        android:minWidth="45sp"
+        android:padding= "4dp"
+        android:textColor= "#00F"
+        android:textStyle= "bold"
+        android:gravity= "center"
+        android:shadowDx= "8 "
+        android:shadowDy= "8"
+        android:shadowColor= "#000"
+        android:shadowRadius="8 "/>
+    <TextView
+        android:id= "@+id/valueView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor= "#008"
+        android:background= "#FFE"
+        android:minEms="3"
+        android:padding= "3dp" />
+    <TextView
+        android:id= "@+id/nominalView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding= "3dp" />
+    <TextView
+        android:id= "@+id/nameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:singleLine="true" />
+</LinearLayout>

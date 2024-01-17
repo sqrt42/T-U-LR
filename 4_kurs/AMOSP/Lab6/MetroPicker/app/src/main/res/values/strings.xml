@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MetroPicker</string>
+    <string name="preference_file_key">com.example.myapp.PREFERENCE_FILE_KEY</string>
+    <string name="saved_selected_station_key">com.example.myapp.SAVED_SELECTED_STATION_KEY</string>
+    <string name="main_exit_option_title">Вийти</string>
+    <string name="list_back_option_title">Назад</string>
+    <string name="main_reset_option_title">Скинути</string>
+    <string name="list_reset_context_title">Скинути обрану станцію.</string>
+    <string name="you_didnt_select_station">Ви не обрали станцію.</string>
+    <string name="you_reseted_station">Ви скинули станцію.</string>
+    <string name="select_station">Оберіть станцію.</string>
+    <string name="check_intent">Перевірити намір</string>
+</resources>

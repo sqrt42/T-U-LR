@@ -1,0 +1,9 @@
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\bin\Debug\lab7.exe.config
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\bin\Debug\lab7.exe
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\bin\Debug\lab7.pdb
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\obj\Debug\lab7.csprojAssemblyReference.cache
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\obj\Debug\lab7.Properties.Resources.resources
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\obj\Debug\lab7.csproj.GenerateResource.cache
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\obj\Debug\lab7.csproj.CoreCompileInputs.cache
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\obj\Debug\lab7.exe
+C:\Users\V\Desktop\osv_\4_kurs\FP\lab7\lab7\lab7\obj\Debug\lab7.pdb

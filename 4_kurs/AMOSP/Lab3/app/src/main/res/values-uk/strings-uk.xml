@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Привіт, світе!!!</string>
+    <string name="app_name">HelloAndroidWorld</string>
+    <string name="image_path">drawable/flag_of_poland_svg</string>
+</resources>

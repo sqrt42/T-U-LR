@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF215574</color>
+    <color name="white">#FFF67FFF</color>
+    <color name="view_bkg_color">#FA5</color>
+    <color name="screen_bkg_color">#F28</color>
+    <color name="text_color">#99FB0000</color>
+    </resources>

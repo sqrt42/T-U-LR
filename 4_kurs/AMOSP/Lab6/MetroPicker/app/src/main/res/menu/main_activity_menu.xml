@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/main_reset_option"
+        android:title="@string/main_reset_option_title"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/main_exit_option"
+        android:title="@string/main_exit_option_title"
+        app:showAsAction="ifRoom"/>
+</menu>

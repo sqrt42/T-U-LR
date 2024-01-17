@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ControlsSample</string>
+    <string name="SAVED_EDIT_TEXT_KEY">SavedEditTextKey</string>
+    <string name="SAVED_RADIO_GROUP_KEY">"SavedRadioGroupKey"</string>
+    <string name="SAVED_TOGGLE_BUTTON_KEY">SavedToggleButtonKey</string>
+    <string name="SAVED_CHECK_BOX_KEY">SavedToggleButtonKey</string>
+    <string name="preference_file_key">com.example.myapp.PREFERENCE_FILE_KEY</string>
+</resources>

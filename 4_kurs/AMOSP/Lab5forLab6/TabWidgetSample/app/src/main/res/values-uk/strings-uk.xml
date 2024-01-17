@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<resources>
+    <string name="app_name">TabWidgetSample</string>
+    <string name="tab1_indicator">Студенти</string>
+    <string name="tab2_indicator">Вчителі</string>
+    <string name="tab3_indicator">Класи</string>
+    <string name="tab1_content">Це вкладка студентів</string>
+    <string name="tab2_content">Це вкладка вчителів</string>
+    <string name="tab3_content">Це вкладка класів</string>
+
+</resources>

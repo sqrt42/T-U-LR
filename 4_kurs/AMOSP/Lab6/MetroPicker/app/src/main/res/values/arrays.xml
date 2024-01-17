@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<resources>
+    <string-array name="stations">
+        <item >Академмістчко</item >
+        <item >Житомирська</item >
+        <item>Святошин</item>
+        <item>Нивки </item>
+        <item >Берестейська</item >
+        <item >Шулявська</item >
+        <item>Політехнічний інститут </item>
+        <item >Вокзальна</item >
+        <item> Університет</item>
+        <item > Театральна</item >
+        <item>Хрещатик </item>
+        <item> Арсенальна </item>
+        <item>....</item>
+    </string-array>
+</resources>
